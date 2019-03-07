@@ -1,0 +1,310 @@
+@font-face {
+	font-family: AquilaEthnocentric;
+	src: url('/font/AquilaEthnocentric.ttf') format('truetype');
+}
+
+body { 
+	font-family: sans-serif;
+	background-repeat: repeat;
+	background-color: #2C3531;
+}
+
+.aquilafont {
+	font-family: AquilaEthnocentric;
+}
+
+.grey {
+	color: grey;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+/* lay out elements */
+
+#headerframe {
+	width: 100%;
+	border-bottom: 2px solid #116466;
+}
+
+#header {	
+	width: 900px;
+	font-size: 42px;
+	font-weight: bold;
+	color: #D1E8E2;
+	margin: auto; 
+}
+
+#header_tagline {
+	float: right;
+    display: block;
+	margin-top: 30px;
+	color: #D1E8E2;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+#main-body {
+	position: relative;
+	width: 900px;
+	min-height: 500px;
+	color: #D9B08C;
+	background: #262626;
+	border: 2px solid #116466;
+	margin: auto;
+	padding: 10px 0px 0px 0px;
+	clear: both;
+	overflow: hidden;
+	border-radius: 20px 0 20px 10px;
+}
+
+#footerframe {
+	width: 100%;
+	border-top: 2px solid #116466;
+	margin: 20px 0 0 0;
+}
+
+#footer_logo{
+	float: right;
+	padding: 0 5px 0 15px;
+}
+
+#footer_tagline {
+	width: 900px;
+	margin: 10px auto;
+	font-size: 14px;
+	color: #D1E8E2;
+	text-align: right;
+}
+
+#footer_corp {
+	width: 900px;
+	margin: 10px auto;
+	color: #D1E8E2;
+	text-align: right;
+	font-size: 10px;
+}
+
+/* patient search field and alert on Chart page */	
+
+#searchpatientframe {
+	width: 899px;
+	height: 70px;
+	font-size: 105%;
+	color: #D1E8E2;
+	margin: 5px auto;
+}
+
+#searchpatient {
+	font-weight: normal;
+}
+
+@keyframes alert {
+  0%    {background-position: 0% 0%; }
+  100%   {background-position: 100% 100%;}
+}
+
+#top-patientinformation {
+	font-size: 14px;
+}
+
+#buttom-frame {
+	width: 95%;
+	clear: both;
+	bottom: 0;
+	margin: 10px auto;
+	position: absolute;
+	text-align: right;
+}
+
+.button01 {
+	border-radius: 50%;
+	border: 2px solid #116466;
+	background-color: #116466;
+	color: #D1E8E2;
+	width: 80px;
+	height: 20px;
+	font-size: 80%;
+}
+
+.button01:hover {
+	background-color: #262626;
+}
+
+.button01 {
+	opacity: 0;
+	transform: translateY(40px) rotate(45deg);
+	transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+.button01_visible {
+	opacity: 1;
+	transform: none;
+}
+
+.button02 {
+	border-radius: 50%;
+	border: 2px solid #116466;
+	background-color: #116466;
+	color: #D1E8E2;
+	width: 80px;
+	height: 20px;
+	font-size: 80%;
+	margin-left: 5px;
+}
+
+.input01 {
+	width: 200px; 
+	border-radius: 4px;
+	border: 1px solid #116466;
+	background-color: #262626;
+	color: #D1E8E2;
+	padding: 0px 5px;
+}
+
+.button02:hover {
+	background-color: #262626;
+}
+
+.input02 {
+	width: 100px;
+	border-radius: 4px;
+	border: 1px solid #116466;
+	background-color: #262626;
+	color: #D1E8E2;
+	padding: 2px 5px;
+}
+
+.patient-alert-blink{
+	text-align: center;
+    animation: alert 1.5s linear infinite alternate;
+    background-size: 400%;
+    background-image: linear-gradient(to right, #262626, #262626, #262626, #f00, #f80, #f00, #262626, #262626, #262626);
+}
+
+/* top-menu */
+
+#top-menu {
+	width: 904px;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	font-size: 85%;
+	font-variant: small-caps;
+}
+
+a.top-menu-item {
+	display: block;
+	float: right;
+	padding: 5px 17px 5px 17px;
+	color: #ffffff;
+	text-decoration: none;
+	background: #116466;
+}
+a.top-menu-item-left {
+	border-top-left-radius: 20px;
+}
+a.top-menu-item-right {
+	border-top-right-radius: 10px;
+}
+a.top-menu-item.selected {
+    background: #262626;
+    color: #FFCB9A;
+}
+
+a.top-menu-item:not(.selected):hover {
+    background: #228488;
+}
+
+a.top-menu-item:active {}
+
+/* de tabs */
+
+h1, h2, h3{
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.tabs{
+    width: 850px;
+    display: block;
+    margin: 0px auto;
+    position: relative; 
+	font-size: 90%;
+}
+
+.tabs .tab{
+    float: left;
+    display: block;
+}
+
+.tabs .tab>input[type="radio"] {
+ /*   position: absolute;
+    top: -9999px;
+    left: -9999px; */
+	display: none;
+}
+
+.tabs .tab>label {
+    display: block;
+    padding: 0px 20px 5px 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    background: #262626;
+	border-bottom: 3px solid #116466;
+	color: #D1E8E2;
+	font-variant: small-caps;
+	left: -50px;
+}
+
+.tabs .tab>label:hover {
+	border-bottom: 3px solid #FFCB9A;
+}
+
+.tabs .content {
+    z-index: 0;/* or display: none; */
+    overflow: hidden;
+    width: 850px;
+    padding: 10px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: #262626;
+    opacity:0;
+    transition: opacity 400ms ease-out;
+}
+
+.tabs>.tab>[id^="tab"]:checked + label {
+    top: 0;
+    background: #262626;
+	border-bottom: 3px solid #FFCB9A;
+    color: #FFCB9A;
+}
+
+.tabs>.tab>[id^="tab"]:checked ~ [id^="tab-content"] {
+    z-index: 1;/* or display: block; */   
+    opacity: 1;
+    transition: opacity 400ms ease-out;
+}
+
+.ui-widget.ui-autocomplete {
+	background: #263836;
+	color: #d1e8e2;
+	border: 1px solid #116466;
+	border-radius: 8px 0 8px 8px;
+	overflow: hidden;
+	transition: opacity 400ms ease-out, transform 400ms ease-out;
+	opacity: 0;
+}
+.ui-widget.ui-autocomplete.autocomplete-visible {
+	opacity: 0.8;
+}
+.ui-autocomplete .ui-state-hover,
+.ui-autocomplete .ui-state-active {
+	background: #365a56;
+	color: #ffcb9a;
+	border: 1px solid #365a56;
+}
