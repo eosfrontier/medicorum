@@ -11,6 +11,7 @@ function load () {
 	$('input#searchpatientfield').on('keypress', function(e) { if (e.which==13) { searchpatient(); } })
 	/* Button actions: edit and save.  NB: close treatment also does save but with a bit extra */
 	$("#edit-button").click(editfields)
+	$("#cancel-button").click(cancelfields)
 	$("#save-button").click(savefields)
 	$('#closetreatmentbutton').click(savefields)
 	/* Add fancy scrollbar to main content */
@@ -59,16 +60,39 @@ function showpatient(patientdata){
 /* If you click the edit button */
 function editfields(){
 	/* all editable fields become input fields */
-	$("span.datafield.editable,span.subdatafield.editable").each(function(){
-		var value=$(this).text()
-		$(this).html('<input type="text" class="input01" value="'+value+'">')
+	$(":not(input).datafield.editable,:not(input).subdatafield.editable").each(function(){
+		if ($(this).has('input').length == 0) {
+			var value=$(this).text()
+			$(this).html('<input type="text" class="input01" value="'+value+'">')
+		}
 	})
 	/* and all checkboxes are enabled */
 	$("input.datafield.editable,input.subdatafield.editable").each(function(){
 		this.disabled = false
 	})
 	/* also the save button is made visible */
+	$("#edit-button").removeClass("button01_visible")
+	$("#cancel-button").addClass("button01_visible")
 	$("#save-button").addClass("button01_visible")
+}
+
+/* If you click the edit button */
+function cancelfields(){
+	/* revert input fields */
+	$(":not(input).datafield.editable,:not(input).subdatafield.editable").each(function() {
+		if ($(this).has('input').length > 0) {
+			$(this).text($(this).find('input').attr('value'))
+		}
+	})
+	/* Disable checkboxes */
+	$("input.datafield.editable,input.subdatafield.editable").each(function() {
+		this.checked = $(this).attr('value') ? true : false
+		this.disabled = true
+	})
+	/* also the save button is made invisible */
+	$("#edit-button").addClass("button01_visible")
+	$("#cancel-button").removeClass("button01_visible")
+	$("#save-button").removeClass("button01_visible")
 }
 
 /* Save all changed fields

@@ -138,9 +138,22 @@ table {
 	overflow: hidden;
 	z-index: 10;
 	padding: 10px;
+	width: 200px;
+	height: 20px;
+}
+
+#edit-button {
+	left: 0px;
+}
+#cancel-button {
+	left: 0px;
+}
+#save-button {
+	left: 100px;
 }
 
 .button01 {
+	position: absolute;
 	border-radius: 50%;
 	border: 2px solid #116466;
 	background-color: #116466;

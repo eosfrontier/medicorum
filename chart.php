@@ -98,6 +98,7 @@
 	</div>
 		<div id="buttom-frame">
 			<button id="edit-button" class="button01">wijzigen</button>
+			<button id="cancel-button" class="button01">annuleren</button>
 			<button id="save-button" class="button01">opslaan</button>
 		</div>
  
