@@ -1,7 +1,7 @@
 <table class="subdata editable">
 	<tr>
 		<td width="380px" class="overview">
-			<p>	<span class="overview_1stcol grey">Volgnummer</span><span class="overview_2ndcol datafield subfieldID grey" id="field_treatment-chart"></span><br>
+			<p>	<span class="overview_1stcol">Volgnummer</span><span class="overview_2ndcol datafield subfieldID grey" id="field_treatment-chart"></span><br>
 				<span class="overview_1stcol">datum opname</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_startdate"></span><br>
 				<span class="overview_1stcol">tijd opname</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_starttime"></span><br>
 				<span class="overview_1stcol">datum ontslag</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_enddate"></span><br>

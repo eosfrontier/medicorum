@@ -33,7 +33,7 @@
 				</tr><tr>
 					<td>&nbsp;&nbsp;ICC nummer</td>
 					<td id="field_ICC_number" class="datafield"></td>
-					<td colspan="2" text-align="right"><div id="searchpatient">Vind je patient (op naam): <input type="text" id="searchpatientfield" class="input02" /><button id="searchpatientbutton" class="button02">zoek</button> </div></td>
+					<td colspan="2" text-align="right"><div id="searchpatient">Vind je patient: <input type="text" id="searchpatientfield" class="input02" /><button id="searchpatientbutton" class="button02">zoek</button> </div></td>
 				</tr>
 				</table>
 			</div>
@@ -52,8 +52,7 @@
 		<?php include 'chart_overview.php';?>
 	</div>
     </li>
-    <!-- Hier stopt de eerste kaart -->
-	<!-- Hier begint de tweede kaart -->
+
     <li class="tab">
       <input type="radio" name="tabs" id="tab2" />
       <label for="tab2">Medische gegevens</label>   
@@ -61,40 +60,36 @@
 	      <?php include 'chart_medical.php';?>
 	</div>
     </li>
-    <!-- Hier stopt de tweede kaart -->
-	<!-- Hier begint de derde kaart -->
-    <li class="tab">
-      <input type="radio" name="tabs" id="tab3" />
-      <label for="tab3">Bionics</label>   
-	<div id="tab-content3" class="content">
-	      <?php include 'chart_bionics.php';?>
-	</div>
-    </li>	
-    <!-- Hier stopt de derde kaart -->
-	<!-- Hier begint de vierde kaart -->	
+						<!-- Hier stopt de tweede kaart -->
+						<!-- Bionics gaan we later toevoegen 
+						<li class="tab">
+						  <input type="radio" name="tabs" id="tab3" />
+						  <label for="tab3">Bionics</label>   
+						<div id="tab-content3" class="content">
+							  <?php include 'chart_bionics.php';?>
+						</div>
+						</li>	 -->
+	
      <li class="tab">
-      <input type="radio" name="tabs" id="tab4" />
-      <label for="tab4">Behandelingskaart</label>   
-	<div id="tab-content4" class="content">
+      <input type="radio" name="tabs" id="tab3" />
+      <label for="tab3">Behandelingskaart</label>   
+	<div id="tab-content3" class="content">
 	      <?php include 'chart_treatment.php';?>
 	</div>
     </li>
-    <!-- Hier stopt de vierde kaart -->
-	
-	<!-- Hier begint de vijfde kaart -->
+
 	 <li class="tab">
-      <input type="radio" name="tabs" id="tab5" />
-      <label for="tab5">Behandelhistorie</label>   
-	<div id="tab-content5" class="content">
+      <input type="radio" name="tabs" id="tab4" />
+      <label for="tab4">Behandelhistorie</label>   
+	<div id="tab-content4" class="content">
 	      <?php include 'chart_history.php';?>
 	</div>
     </li>
-    <!-- Hier stopt de vijfde kaart -->
-	<!-- Hier begint de zesde kaart -->	
+
     <li class="tab">
-      <input type="radio" name="tabs" id="tab6" />
-      <label for="tab6">Mortuarium</label>   
-	<div id="tab-content6" class="content">
+      <input type="radio" name="tabs" id="tab5" />
+      <label for="tab5">Mortuarium</label>   
+	<div id="tab-content5" class="content">
 	      <?php include 'chart_morgue.php';?>
 	</div>
     </li>

@@ -187,4 +187,7 @@ function showdata(patientdata) {
 			}
 		}
 	}
+	for (subset in patientdata['subsets']) {
+		$('#subsetlist_'+subset).html(patientdata['subsets'][subset].join(''))
+	}
 }

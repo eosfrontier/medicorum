@@ -20,7 +20,7 @@ body {
 }
 
 .grey {
-	color: grey;
+	color: grey !important;
 }
 
 table {
@@ -379,7 +379,6 @@ td.overview {
 	overflow: hidden;
 	opacity: 0.0;
 	transition: opacity 400ms ease-in-out;
-	display: initial !important;
 }
 .ui-menu.ui-autocomplete .ui-menu-item {
 	background: #262626;
@@ -398,12 +397,22 @@ td.overview {
 .ui-menu.ui-autocomplete.autocomplete-visible {
 	opacity: 0.8;
 }
+
+/* styling checkboxes and labels treatment chart*/
 input[type='checkbox']:disabled:not(:checked) {
   display: none;
 }
-input[type='checkbox']:checked + label {
-  color: red;
+
+input[type='checkbox']:disabled:(:checked) {
+  display: none;
 }
+
+input[type='checkbox']:checked + label {
+  color: #D1E8E2;
+  font-weight: bold;
+}
+
+
 div.character_image {
   position: absolute;
   right: 5px;
@@ -413,7 +422,13 @@ div.character_image {
   border: 0;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 1px 1px 3px #111;
+  padding: 1px;
+  background-color: #111;
 }
 div.character_image img {
-  width: 120px;
+  margin: 0px;
+  display: block;
+  max-width: 120px;
+  max-height: 150px;
 }

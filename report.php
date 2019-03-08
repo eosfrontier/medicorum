@@ -13,18 +13,20 @@
 <div id="top-menu"><?php include 'page_top-menu.php';?></div>
 
 <div id="main-body">
-
-  <ul class="tabs">
-    
+	<div id="main-content">
+	
+	  <ul class="tabs">
+ <!-- Hier begint de eerste kaart -->
 		<li class="tab">
-			<input type="radio" name="tabs" checked="checked" id="tab1" />
-			<label for="tab1">rapportages</label>
-			<div id="tab-content1" class="content">
-			Als rechtgeaard Aquila-systeem moeten er natuurlijk veel te veel rapportages beschikbaar zijn.
-			</div>
+				<input type="radio" name="tabs" checked="checked" id="tab1" />
+				<label for="tab1">Rapportages</label>
+				<div id="tab-content1" class="content">
+					<p>Deze functionaliteit is momenteel nog niet beschikbaar, onze excuses voor het ongemak.</p>		
+				</div>
 		</li>
-    
-	</ul>
+
+
+	</div>
 </div>
 
 <?php include 'page_footer.php';?>

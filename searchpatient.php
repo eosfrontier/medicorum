@@ -1,7 +1,18 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1); 
- 
+
+function make_html($template, $subsetlist)
+{
+	$subsetresult = [];
+	foreach ($subsetlist as $subfieldID => $subfieldvalues) {
+		ob_start();
+		include "templates/$template.php";
+		$subsetresult[$subfieldID] = ob_get_clean();
+	}
+	return $subsetresult;
+}
+
 // DB config in a separate file because it contains passwords and will not be in the git repo
 require_once 'db_config.php';
 
@@ -63,7 +74,7 @@ if ($patientresult) {
 		if ($fieldvalue->fieldname != $lastfieldname) {
 			if ($lastfieldname) {
 				$subsetlist[$lastfieldvalue] = $patientsubset;
-				$patientdata['subsets'][$lastfieldname] = $subsetlist;
+				$patientdata['subsets'][$lastfieldname] = make_html($lastfieldname, $subsetlist);
 			}
 			$lastfieldname = $fieldvalue->fieldname;
 			$lastfieldvalue = Null;
@@ -80,7 +91,7 @@ if ($patientresult) {
 	}
 	if ($lastfieldname) {
 		$subsetlist[$lastfieldvalue] = $patientsubset;
-		$patientdata['subsets'][$lastfieldname] = $subsetlist;
+		$patientdata['subsets'][$lastfieldname] = make_html($lastfieldname, $subsetlist);
 	}
 
 	/* Special: Send the URL for the image, which is based on character ID */
