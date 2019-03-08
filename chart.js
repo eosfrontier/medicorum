@@ -157,8 +157,10 @@ function saveready(patientdata){
 		$(this).text($(this).find('input').val())
 	})
 	$("input.datafield.editable,input.subdatafield.editable").each(function() {
+		$(this).attr('value',this.checked ? '1' : '')
 		this.disabled = true
 	})
+	$("#edit-button").addClass("button01_visible")
 	$("#cancel-button").removeClass("button01_visible")
 	$("#save-button").removeClass("button01_visible")
 	/* The save backend returns all the changed data, show this (this also sets the 'value' attribute so it is no longer 'changed') */
