@@ -53,6 +53,7 @@ function showpatient(patientdata){
 	$("input[type='checkbox'].datafield,input[type='checkbox'].subdatafield").prop('checked',false).attr('value','')
 	/* Edit button visible, save button invisible */
 	$("#edit-button").addClass("button01_visible")
+	$("#cancel-button").removeClass("button01_visible")
 	$("#save-button").removeClass("button01_visible")
 	showdata(patientdata)
 }
@@ -158,6 +159,7 @@ function saveready(patientdata){
 	$("input.datafield.editable,input.subdatafield.editable").each(function() {
 		this.disabled = true
 	})
+	$("#cancel-button").removeClass("button01_visible")
 	$("#save-button").removeClass("button01_visible")
 	/* The save backend returns all the changed data, show this (this also sets the 'value' attribute so it is no longer 'changed') */
 	showdata(patientdata)
