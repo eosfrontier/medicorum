@@ -8,7 +8,7 @@ function make_html($template, $subsetlist)
 	foreach ($subsetlist as $subfieldID => $subfieldvalues) {
 		ob_start();
 		include "templates/$template.php";
-		$subsetresult[$subfieldID] = ob_get_clean();
+		array_push($subsetresult, ob_get_clean());
 	}
 	return $subsetresult;
 }
@@ -39,17 +39,19 @@ if ($patientresult) {
 	/* Get the rest of the data from the medicorum tables.
 	 * This will not get closed data and it should get data in order so the latest data 'wins' */
 	$patientresult = $conn->query("
-		select fieldname,fieldvalue from med_fieldtypes
+		select fieldname,fieldvalue,med_fieldvalues.mod_timestamp from med_fieldtypes
 		join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
 		where characterID=${characterid}
 		and close_timestamp is NULL
 		UNION
-		select concat(fieldname,'/',fieldvalue,'/',subfieldname) as fieldname,subfieldvalue as fieldvalue
+		select concat(fieldname,'/',fieldvalue,'/',subfieldname) as fieldname,subfieldvalue as fieldvalue,med_fieldvalues.mod_timestamp
 		from med_fieldtypes join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
 		join med_subfieldvalues on (med_subfieldvalues.fieldvalueID = med_fieldvalues.fieldvalueID)
 		join med_subfieldtypes on (med_subfieldtypes.subfieldtypeID = med_subfieldvalues.subfieldtypeID)
 		where characterID=${characterid}
-		and med_fieldvalues.close_timestamp IS NULL");
+		and med_fieldvalues.close_timestamp IS NULL
+		order by mod_timestamp
+		");
 	if ($conn->error) { die($conn->error); }
 	while ($fieldvalue=$patientresult->fetch_object()){
 		/* Add (or overwrite) each field value */

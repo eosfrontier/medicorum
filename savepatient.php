@@ -79,7 +79,7 @@ foreach($_POST as $key=>$value) {
 				$subfieldtypeID = $subfieldtypeID->subfieldtypeID;
 				$conn->query("insert into med_subfieldvalues (subfieldtypeID, fieldvalueID, subfieldvalue, mod_characterID)
 					      values ($subfieldtypeID, $subfieldID, '$fieldvalue', 0)");
-				$patientdata["$fieldname/$subfieldnum/$subfieldname"] = $fieldvalue;
+				$patientdata["$fieldname/$subfieldnum/$subfieldname"] = $value;
 			}
 		}
 	} else {
@@ -105,7 +105,7 @@ foreach($_POST as $key=>$value) {
 				$fieldtypeID = $fieldtypeID->fieldtypeID;
 				$conn->query("insert into med_fieldvalues (fieldtypeID, characterID, fieldvalue, mod_characterID)
 					      values ($fieldtypeID, $characterID, '$fieldvalue', 0)");
-				$patientdata[$fieldname] = $fieldvalue;
+				$patientdata[$fieldname] = $value;
 			}
 		}
 	}
