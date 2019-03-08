@@ -27,26 +27,62 @@ if ($patientresult) {
 	
 	/* Get the rest of the data from the medicorum tables.
 	 * This will not get closed data and it should get data in order so the latest data 'wins' */
-	$patientresult = $conn->query("select fieldname,fieldvalue from med_fieldtypes
-				       join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
-				       where characterID=${characterid}
-				       and close_timestamp is NULL");
+	$patientresult = $conn->query("
+		select fieldname,fieldvalue from med_fieldtypes
+		join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
+		where characterID=${characterid}
+		and close_timestamp is NULL
+		UNION
+		select concat(fieldname,'/',fieldvalue,'/',subfieldname) as fieldname,subfieldvalue as fieldvalue
+		from med_fieldtypes join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
+		join med_subfieldvalues on (med_subfieldvalues.fieldvalueID = med_fieldvalues.fieldvalueID)
+		join med_subfieldtypes on (med_subfieldtypes.subfieldtypeID = med_subfieldvalues.subfieldtypeID)
+		where characterID=${characterid}
+		and med_fieldvalues.close_timestamp IS NULL");
 	if ($conn->error) { die($conn->error); }
 	while ($fieldvalue=$patientresult->fetch_object()){
 		/* Add (or overwrite) each field value */
 		$patientdata[$fieldvalue->fieldname]=$fieldvalue->fieldvalue;
 	}
-	/* Get subsets of data (treatment chart, maybe more in future) */
-	$patientresult = $conn->query("select fieldname,fieldvalue,subfieldname,subfieldvalue
-					  from med_fieldtypes join med_fieldvalues on (med_fieldtypes.fieldtypeID=med_fieldvalues.fieldtypeID)
-					  join med_subfieldvalues on (med_subfieldvalues.fieldvalueID = med_fieldvalues.fieldvalueID)
-					  join med_subfieldtypes on (med_subfieldtypes.subfieldtypeID = med_subfieldvalues.subfieldtypeID)
-					  where characterID=${characterid}");
+
+	/* Get historical data */
+	$patientresult = $conn->query("
+		select fieldname,fieldvalue,subfieldname,subfieldvalue
+		from med_fieldvalues
+		join med_fieldtypes on (med_fieldtypes.fieldtypeID = med_fieldvalues.fieldtypeID)
+		join med_subfieldvalues on (med_subfieldvalues.fieldvalueID = med_fieldvalues.fieldvalueID)
+		join med_subfieldtypes on (med_subfieldtypes.subfieldtypeID = med_subfieldvalues.subfieldtypeID)
+		where characterID=${characterid}
+		and close_timestamp is not NULL
+		order by fieldname,fieldvalue");
 	if ($conn->error) { die($conn->error); }
-	while ($fieldvalue=$patientresult->fetch_object()){
-		/* Subset data is sent as fieldname/setID/subfieldname */
-		$patientdata[$fieldvalue->fieldname.'/'.$fieldvalue->fieldvalue.'/'.$fieldvalue->subfieldname]=$fieldvalue->subfieldvalue;
+	$patientdata['subsets'] = [];
+	$lastfieldname = Null;
+	$lastfieldvalue = Null;
+	while ($fieldvalue=$patientresult->fetch_object()) {
+		if ($fieldvalue->fieldname != $lastfieldname) {
+			if ($lastfieldname) {
+				$subsetlist[$lastfieldvalue] = $patientsubset;
+				$patientdata['subsets'][$lastfieldname] = $subsetlist;
+			}
+			$lastfieldname = $fieldvalue->fieldname;
+			$lastfieldvalue = Null;
+			$subsetlist = [];
+		}
+		if ($fieldvalue->fieldvalue != $lastfieldvalue) {
+			if ($lastfieldvalue) {
+				$subsetlist[$lastfieldvalue] = $patientsubset;
+			}
+			$patientsubset = [];
+			$lastfieldvalue = $fieldvalue->fieldvalue;
+		}
+		$patientsubset[$fieldvalue->subfieldname] = $fieldvalue->subfieldvalue;
 	}
+	if ($lastfieldname) {
+		$subsetlist[$lastfieldvalue] = $patientsubset;
+		$patientdata['subsets'][$lastfieldname] = $subsetlist;
+	}
+
 	/* Special: Send the URL for the image, which is based on character ID */
 	$patientdata['character_image'] = "https://www.eosfrontier.space/eos_douane/images/mugs/$characterid.jpg";
 	
