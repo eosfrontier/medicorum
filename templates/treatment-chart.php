@@ -159,4 +159,4 @@
 		<td width="400px" class="overview">Controleafspraak<br><span ><?=@$subfieldvalues['aftercare-appointment'] ?></span></td>
 	</tr>
 </table>
-<div>
+</div>
