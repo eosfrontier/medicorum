@@ -78,6 +78,18 @@ function saveready(data) {
 <body>
 <div 
 <?php include 'page_header.php';?>
+
+<div id="top-menu">
+<?php
+function selectedif($wanteduri) {
+  if (basename($_SERVER['PHP_SELF'], '.php') == $wanteduri) {
+    return 'selected';
+  }
+}
+?>
+<a href="admin.php" class="top-menu-item top-menu-item top-menu-item-right <?=selectedif("admin")?>">Characters Verbergen</a>
+</div>
+
 <div id="main-body">
 	<div id="main-content">
 		<table id="character-exclude-list">
