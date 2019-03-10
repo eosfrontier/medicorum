@@ -1,17 +1,17 @@
 <table class="subdata editable">
 	<tr>
 		<td width="380px" class="overview">
-			<p>	<span class="overview_1stcol">Volgnummer</span><span class="overview_2ndcol datafield subfieldID grey" id="field_treatment-chart"></span><br>
+			<p>	<span class="overview_1stcol">Volgnummer</span><span class="overview_2ndcol datafield subfieldID" id="field_treatment-chart"></span><br><br>
 				<span class="overview_1stcol">datum opname</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_startdate"></span><br>
-				<span class="overview_1stcol">tijd opname</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_starttime"></span><br>
+				<span class="overview_1stcol">tijd opname</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_starttime"></span><br><br>
 				<span class="overview_1stcol">datum ontslag</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_enddate"></span><br>
 				<span class="overview_1stcol">tijd ontslag</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_endtime"></span><br>
 			</p>
 		</td>
 		<td width="400px" class="overview">
-			<p>	<span class="overview_1stcol">Verantwoordelijk arts</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_doctor-responsible"></span><br>
+			<p><br><br><span class="overview_1stcol">Verantwoordelijk arts</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_doctor-responsible"></span><br>
 				<span class="overview_1stcol">Behandelend arts</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_doctor-acting"></span><br>
-				<span class="overview_1stcol">Assistentie door</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_doctor-assisting"></span><br>
+				<span class="overview_1stcol">Assistentie door</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_doctor-assisting"></span><br><br>
 				<span class="overview_1stcol">Nazorg inplannen?</span><span class="overview_2ndcol subdatafield editable" id="subfield_treatment-chart_aftercare-plan"></span><br>
 			</p>
 		</td>
@@ -159,6 +159,6 @@
 	</tr>
 	<tr class="chart_treatment">
 		<td width="380px"></td>
-		<td width="160px" class="overview"><button id="closetreatmentbutton" class="button03">Behandelkaart Afsluiten</input></td>
+		<td width="160px" class="overview"><br><br><button id="closetreatmentbutton" class="button03">Behandelkaart Afsluiten</input></td>
 	</tr>
 </table>

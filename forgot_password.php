@@ -24,15 +24,9 @@
 	<div id="tab-content1" class="content">
 	
 		<div class="login-div">
-			<h1 class="aquilafont">Login</h3>
-			<p>Gebruik uw gebruikersnaam en wachtwoord.</p>
-			
-			<p class="aquilafont">Gebruikersnaam</p>
-			<input type="text" name="username"><br>
-			<p class="aquilafont">Wachtwoord</p>
-			<input type="text" name="password"><br><br>
-			<button type="button" class="aquilafont login-button">inloggen</button><br>
-			<p><a href="forgot_password.php">Wachtwoord vergeten?</a></p>
+			<h1 class="aquilafont">Wachtwoord vergeten</h3>
+			<p class="password-div">Indien u uw wachtwoord vergeten bent, dient u zicht te wenden tot de afdeling Digitale Ondersteuning Medisch Kantoor, Operationeel & Privacy. Deze is onderdeel van de afdeling Information Technology, vallende onder ACME-central. Verzoeken om een nieuw wachtwoord kunnen ingediend worden bij het secretariaat van de afdeling Digitale Ondersteuning Medisch Kantoor, Operationeel & Privacy.</p>
+			<p>Gebruik hiervoor formulier PF_342_sub2.</p>
 			
 		</div>
 	

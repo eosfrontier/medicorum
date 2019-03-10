@@ -5,7 +5,7 @@
 
 body { 
 	font-family: sans-serif;
-	background-color: #2C3531;
+	background-color: #262e3e;
 	position: absolute;
 	display: flex;
 	flex-flow: column;
@@ -25,6 +25,10 @@ body {
 
 table {
 	border-collapse: collapse;
+}
+
+td {
+	vertical-align: top;
 }
 
 /* lay out elements */
@@ -346,22 +350,6 @@ h1, h2, h3{
     height: inherit;
 }
 
-td.overview {
-	vertical-align: top;
-}
-
-.overview_1stcol {
-	width: 150px;
-	display: block;
-	float: left; 
-	color: #D1E8E2;
-}
-
-.overview_2ndcol {
-	color: #D9B08C;
-}
-
-
 .chart_treatment {}
 
 .ps > .ps__rail-x:hover,
@@ -411,7 +399,23 @@ td.overview {
 	opacity: 0.8;
 }
 
-/* styling checkboxes and labels treatment chart*/
+/* styling table, checkboxes and labels treatment chart */
+
+td.overview {
+	vertical-align: top;
+}
+
+.overview_1stcol {
+	width: 150px;
+	display: block;
+	float: left; 
+	color: #D1E8E2;
+}
+
+.overview_2ndcol {
+	color: #D9B08C;
+}
+
 input[type='checkbox']:disabled:not(:checked) {
   display: none;
 }
@@ -425,6 +429,44 @@ input[type='checkbox']:checked + label {
   font-weight: bold;
 }
 
+/* styling patient history chart */
+
+table.history_main {
+	width: 95%;
+	border-top: 1px dotted #116466;
+}
+
+.history_main th {
+	text-align: left;
+	color: #D1E8E2;
+	font-weight: bold;
+}
+
+.history_main tr {
+	text-align: left;
+}
+
+hr.history {
+	border: 5px solid #116466;
+	border-radius: 5px;
+}
+
+hr.splitter {
+	border: 1px dotted grey;
+}
+
+td.history_side input[type='checkbox']:disabled:not(:checked) + label {
+	color: grey;
+	font-size: smaller;
+/*	display: none; */
+}
+
+td.history_side input[type='checkbox']:checked + label {
+	color: #D9B08C;
+	font-weight: normal;
+}
+
+/* let's put a picture on the page! */
 
 div.character_image {
   position: absolute;
@@ -444,4 +486,45 @@ div.character_image img {
   display: block;
   max-width: 120px;
   max-height: 150px;
+}
+
+
+/* login mock-up thingy */
+
+.login-div {
+	margin: auto;
+	text-align: center;
+	width:500px;
+	border: 1px dotted #116466;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #262e3e;
+	color: #D1E8E2;
+}
+
+.login-div a:link, .login-div a:visited {
+	color: grey;
+	text-decoration: none;
+	font-size: smaller;
+}
+
+.login-div a:hover {
+	color: white;
+}
+
+.login-button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+   background-color: #D1E8E2;
+  color: #116466;
+  border-color: #116466;
+}
+
+.login-button:hover {
+  background-color: #116466;
+  color: #D1E8E2;
+}
+
+.password-div {
+	text-align: justify;
 }
