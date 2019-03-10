@@ -87,7 +87,8 @@ function selectedif($wanteduri) {
   }
 }
 ?>
-<a href="admin.php" class="top-menu-item top-menu-item top-menu-item-right <?=selectedif("admin")?>">Characters Verbergen</a>
+<a href="admin-exclude.php" class="top-menu-item top-menu-item top-menu-item-right <?=selectedif("admin-exclude")?>">Characters Verbergen</a>
+<a href="admin-fields.php" class="top-menu-item top-menu-item top-menu-item-right <?=selectedif("admin-fields")?>">Characters Verbergen</a>
 </div>
 
 <div id="main-body">
