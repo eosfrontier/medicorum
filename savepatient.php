@@ -24,6 +24,7 @@ $fieldtypeIDs = [];
 
 // For returning te updated values
 $patientdata = [];
+$patientdata['characterID'] = $characterID;
 foreach($_POST as $key=>$value) {
 	$fieldname = explode('/',$conn->real_escape_string($key));
 	$fieldvalue = $conn->real_escape_string($value);
