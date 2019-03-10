@@ -528,3 +528,18 @@ div.character_image img {
 .password-div {
 	text-align: justify;
 }
+
+@keyframes spinlogo {
+	0% { transform: rotateY(90deg); }
+	100% { transform: rotateY(-270deg);}
+}
+
+#footer_logo {
+	padding: 0 20px;
+  perspective: 200px;
+	overflow: hidden;
+}
+
+#footer_logo img {
+	animation: spinlogo 6s linear infinite;
+}
