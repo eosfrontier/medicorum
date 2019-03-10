@@ -29,7 +29,14 @@ $conn->set_charset("utf8");
 // Get and sanitize the requested search string
 $searchpatientfield = $conn->real_escape_string($_GET["searchpatientfield"]);
 
-$patientresult = $conn->query("select * from ecc_characters where character_name like '%${searchpatientfield}%'");
+$patientresult = $conn->query("select * from ecc_characters
+	where character_name like '%${searchpatientfield}%'
+	and not exists(select fieldvalue from med_fieldvalues
+		join med_fieldtypes on (med_fieldtypes.fieldtypeID = med_fieldvalues.fieldtypeID)
+		where fieldname='exclude'
+		and med_fieldvalues.characterID = ecc_characters.characterID
+		and close_timestamp is NULL)
+");
 
 if ($patientresult) {
 	/* Start with an assoc array (hashmap) */

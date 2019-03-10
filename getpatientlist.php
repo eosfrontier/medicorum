@@ -16,7 +16,15 @@ if ($conn->connect_error) {
 $conn->set_charset("utf8");
 
 /* Get all the character names, including ICC number */
-$patientresult = $conn->query("select character_name as value, concat(character_name,' (',ICC_number,')') as label from ecc_characters");
+$patientresult = $conn->query("
+	select character_name as value, concat(character_name,' (',ICC_number,')') as label
+	from ecc_characters
+	where not exists(select fieldvalue from med_fieldvalues
+		join med_fieldtypes on (med_fieldtypes.fieldtypeID = med_fieldvalues.fieldtypeID)
+		where fieldname='exclude'
+		and med_fieldvalues.characterID = ecc_characters.characterID
+		and close_timestamp is NULL)
+");
 
 if ($patientresult) {
 	/* Build json by hand because it didn't work in one go for some reason */
