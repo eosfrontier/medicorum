@@ -5,7 +5,7 @@ function selectedif($wanteduri) {
   }
 }
 ?>
- <a href="http://test.medicorum.space/admin-exclude.php" class="top-menu-item top-menu-item-right <?=selectedif("beheer")?>">Beheer</a>
+ <a href="admin-exclude.php" class="top-menu-item top-menu-item-right <?=selectedif("admin-exclude")?>">Beheer</a>
 <!--<a href="#" class="top-menu-item <?=selectedif("account")?>">Mijn account</a>
 <a href="report.php" class="top-menu-item <?=selectedif("report")?>">Rapportages</a> 
 <a href="donor.php" class="top-menu-item class="top-menu-item <?=selectedif("donor")?>">Donor registratie</a> -->
